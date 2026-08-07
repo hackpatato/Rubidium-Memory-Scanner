@@ -20,3 +20,6 @@ English
         No Liability: The developer(s) assume no liability and are not responsible for any misuse, software instability, or legal consequences caused by this program.
 
         Authorized Use Only: This tool must only be used on systems or applications you own or have explicit permission to inspect. Do not use this tool on online games or software protected by anti-cheat systems.
+<p align="center">
+  <img src="logo.png" width="150" alt="Rubidium Logo">
+</p>
