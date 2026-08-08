@@ -32,7 +32,7 @@ if fileExists(mapsyolu):
             discard f.readbuffer(addr buffer[0], boyut)
             echo "we readed", boyut," bayt"
           except IOError:
-          echo "ehhh something is wrong with reading?"
+            echo "ehhh something is wrong with reading?"
     f.close() 
   else:
     echo "13. sometyhing worng"
