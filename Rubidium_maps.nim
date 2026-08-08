@@ -8,11 +8,14 @@ let pid_id = readLine(stdin).strip()
  #mapping kısmını yapaçağız şimdi yukarda pid id girme kısmı yapıldı
 let mapsyolu = "/proc/" & pid_id & "/maps"
 let memyolu = "/proc/" & pid_id & "/mem" 
+var mddosya: File
+discard open(mddosya, "maps.md", fmWrite)
 if fileExists(mapsyolu):
   var f: File 
   if open(f,memyolu,fmRead):
-
+    
     for satir in lines(mapsyolu):
+      mddosya.writeLine("- Harita Bilgisi: " & satir)
       echo satir
       let data_1 = satir.splitwhitespace()
 
@@ -21,7 +24,7 @@ if fileExists(mapsyolu):
         let basla = adres[0]
         let bitis = adres[1]
 
-        echo "Okunabilir Bölge -> Başlangıç: ", basla, " | Bitiş: ", bitis
+        mddosya.writeLine("### start: `" & basla & "` | end: `" & bitis & "`")
         let baslangicadresi = parseHexInt(basla)
         let bitisadresi = parsehexInt(bitis)
         let boyut = bitisadresi - baslangicadresi
@@ -29,12 +32,17 @@ if fileExists(mapsyolu):
           try:
             f.setfilepos(baslangicadresi)
             var buffer = newseq[byte](boyut)
-            discard f.readbuffer(addr buffer[0], boyut)
+            let okunanbayt = f.readbuffer(addr buffer[0], boyut)
+            mddosya.writeLine("  * Okunan: `" & $okunanbayt & " / " & $boyut & "` bayt")
             echo "we readed", boyut," bayt"
           except IOError:
+            mddosya.writeLine(" reading error ? maybe sudo or anything ?????")
             echo "ehhh something is wrong with reading?"
     f.close() 
+    mddosya.close()
   else:
     echo "13. sometyhing worng"
+    mddosya.close()
 else:
   echo "6. something is false"
+  mddosya.close()
