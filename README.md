@@ -23,3 +23,11 @@ English
 <p align="center">
   <img src="logo.png" width="150" alt="Rubidium Logo">
 </p>
+
+
+
+
+
+
+
+NOT : GUİ ÇALIŞMAYABİLİR . PİD için gui yok.
