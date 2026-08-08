@@ -5,7 +5,7 @@ for kind, path in walkdir("/proc"):
   let klasorAdi = extractfilename(path)
 
   
-  if allcharsınset(klasorAdi, Digits) and klasorAdi != "":
+  if allCharsInSet(klasorAdi, Digits) and klasorAdi != "":
     
     let commYolu = path & "/comm"
 
