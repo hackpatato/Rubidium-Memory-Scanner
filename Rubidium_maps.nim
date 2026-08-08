@@ -13,26 +13,26 @@ if fileExists(mapsyolu):
   if open(f,memyolu,fmRead):
 
     for satir in lines(mapsyolu):
-     echo satir
-     let data_1 = satir.splitwhitespace()
+      echo satir
+      let data_1 = satir.splitwhitespace()
 
       if data_1.len >= 2 and data_1[1].contains('r'):
-       let adres = data_1[0].split('-')
-       let basla = adres[0]
-       let bitis = adres[1]
+        let adres = data_1[0].split('-')
+        let basla = adres[0]
+        let bitis = adres[1]
 
-       echo "Okunabilir Bölge -> Başlangıç: ", basla, " | Bitiş: ", bitis
-       let baslangicadresi = parseHexInt(basla)
-       let bitisadresi = parsehexInt(bitis)
-       let boyut = bitisadresi - baslangicadresi
-       if boyut > 0:
-         try:
-           f.setfilepos(baslangicadresi)
-           var buffer = newseq[byte](boyut)
-           discard f.readbuffer(addr buffer[0], boyut)
-           echo "we readed", boyut," bayt"
-         except IOError:
-           echo "ehhh something is wrong with reading?"
+        echo "Okunabilir Bölge -> Başlangıç: ", basla, " | Bitiş: ", bitis
+        let baslangicadresi = parseHexInt(basla)
+        let bitisadresi = parsehexInt(bitis)
+        let boyut = bitisadresi - baslangicadresi
+        if boyut > 0:
+          try:
+            f.setfilepos(baslangicadresi)
+            var buffer = newseq[byte](boyut)
+            discard f.readbuffer(addr buffer[0], boyut)
+            echo "we readed", boyut," bayt"
+          except IOError:
+          echo "ehhh something is wrong with reading?"
     f.close() 
   else:
     echo "13. sometyhing worng"
