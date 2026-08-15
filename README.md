@@ -31,3 +31,4 @@ English
 
 
 NOT : GUİ ÇALIŞMAYABİLİR . PİD için gui yok.
+NOT : GUİ İS NOT TESTED. 
